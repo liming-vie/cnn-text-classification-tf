@@ -10,13 +10,14 @@ Add one more full connected layer before the dropout layer, using the input as t
 - Tensorflow > 0.12
 - Numpy
 - Thrift
+- Word segmentation service or tool (Replace the la client)
 
 ## Training
 
 Print parameters:
 
 ```bash
-./train.py --help
+./textcnn/train.py --help
 ```
 
 ```
@@ -52,18 +53,22 @@ optional arguments:
 
 Train:
 
-```bash
-./train.py
-```
+Use [train.sh](https://github.com/liming-vie/cnn-text-classification-tf/blob/master/train/train.sh) to auto process data and setup a thrift service. 
 
-## Evaluating
+See example in [example.sh](https://github.com/liming-vie/cnn-text-classification-tf/blob/master/train/example.sh).
 
 ```bash
-./eval.py --eval_train --checkpoint_dir="./runs/1459637919/checkpoints/"
+cd ./train
+./train.sh $train_file $feature_file $output_dir $port
 ```
 
-Replace the checkpoint dir with the output from the training. To use your own data, change the `eval.py` script to load your data.
+Test:
 
+Use [predict.sh](https://github.com/liming-vie/cnn-text-classification-tf/blob/master/train/predict.sh) to use thrift service.
+```bash
+cd ./train
+./predict.sh port_number
+```
 
 ## References
 
