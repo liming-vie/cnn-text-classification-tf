@@ -2,6 +2,8 @@
 
 It is slightly simplified implementation of Kim's [Convolutional Neural Networks for Sentence Classification](http://arxiv.org/abs/1408.5882) paper in Tensorflow.
 
+Add one more full connected layer before the dropout layer, using the input as the of pooled features and user-defined feature.
+
 ## Requirements
 
 - Python 3
